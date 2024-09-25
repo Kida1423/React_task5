@@ -1,0 +1,18 @@
+.cell {
+  transition: background-color 0.3s;
+}
+
+.cell.open {
+  background-color: #d9f7be;
+}
+
+.cell.closed {
+  background-color: #f0f0f0;
+}
+#root{
+  width: 50%;
+  margin: 0;
+}
+h2{
+  margin-top: 10px;
+}
