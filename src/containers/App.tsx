@@ -3,40 +3,40 @@ import { Button, Alert, Row, Col } from 'antd';
 import './App.css';
 
 interface Cell {
-  hasItem: boolean;
-  isOpen: boolean;
+  hasItem: boolean
+  isOpen: boolean
 }
 
 const generateCells = (): Cell[] => {
-  const cells: Cell[] = Array.from({ length: 36 }, () => ({ hasItem: false, isOpen: false }));
-  const randomIndex = Math.floor(Math.random() * 36);
-  cells[randomIndex].hasItem = true;
-  return cells;
+  const cells: Cell[] = Array.from({ length: 36 }, () => ({ hasItem: false, isOpen: false }))
+  const randomIndex = Math.floor(Math.random() * 36)
+  cells[randomIndex].hasItem = true
+  return cells
 };
 
 const App: React.FC = () => {
-  const [cells, setCells] = useState<Cell[]>(generateCells());
-  const [attempts, setAttempts] = useState(0);
-  const [found, setFound] = useState(false);
+  const [cells, setCells] = useState<Cell[]>(generateCells())
+  const [attempts, setAttempts] = useState(0)
+  const [found, setFound] = useState(false)
 
   const handleClick = (index: number) => {
-    if (found) return;
+    if (found) return
 
-    const updatedCells = [...cells];
+    const updatedCells = [...cells]
     if (!updatedCells[index].isOpen) {
-      updatedCells[index].isOpen = true;
-      setAttempts(attempts + 1);
-      setCells(updatedCells);
+      updatedCells[index].isOpen = true
+      setAttempts(attempts + 1)
+      setCells(updatedCells)
       if (updatedCells[index].hasItem) {
-        setFound(true);
+        setFound(true)
       }
     }
   };
 
   const handleReset = () => {
-    setCells(generateCells());
-    setAttempts(0);
-    setFound(false);
+    setCells(generateCells())
+    setAttempts(0)
+    setFound(false)
   };
 
   return (
@@ -64,7 +64,7 @@ const App: React.FC = () => {
                 cursor: found ? 'not-allowed' : 'pointer'
               }}
             >
-              {cell.isOpen && cell.hasItem && ' О'}
+              {cell.isOpen && cell.hasItem && 'О'}
             </div>
           </Col>
         ))}
